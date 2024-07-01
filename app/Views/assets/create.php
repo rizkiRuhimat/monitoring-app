@@ -32,6 +32,6 @@ Add New Asset
         <input type="checkbox" name="critical_status" class="form-check-input">
         <label for="critical_status">Critical Status</label>
     </div>
-    <button type="submit" class="btn btn-primary">Add Asset</button>
+    <button type="submit" class="btn btn-primary mt-4">Add Asset</button>
 </form>
 <?= $this->endSection() ?>
