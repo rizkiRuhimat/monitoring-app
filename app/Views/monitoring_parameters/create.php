@@ -45,7 +45,7 @@ Create Monitoring Parameter
         <label for="description">Description</label>
         <textarea name="description" class="form-control" required></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Create</button>
+    <button type="submit" class="btn btn-primary mt-4">Create</button>
 </form>
 </div>
 <?= $this->endSection() ?>

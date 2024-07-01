@@ -28,6 +28,6 @@ Edit Inventory Item
         <label for="description">Description</label>
         <textarea name="description" class="form-control" required><?= $inventory['description'] ?></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="btn btn-primary mt-4">Update</button>
 </form>
 <?= $this->endSection() ?>

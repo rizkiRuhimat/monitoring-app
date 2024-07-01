@@ -42,6 +42,6 @@ Report New Incident
         <label for="actions_taken">Actions Taken</label>
         <textarea name="actions_taken" class="form-control"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Report</button>
+    <button type="submit" class="btn btn-primary mt-4">Report</button>
 </form>
 <?= $this->endSection() ?>

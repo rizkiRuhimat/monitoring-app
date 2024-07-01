@@ -20,6 +20,6 @@ Add New Document
         <label for="file">Upload File</label>
         <input type="file" name="file" class="form-control">
     </div>
-    <button type="submit" class="btn btn-primary">Add Document</button>
+    <button type="submit" class="btn btn-primary mt-4">Add Document</button>
 </form>
 <?= $this->endSection() ?>

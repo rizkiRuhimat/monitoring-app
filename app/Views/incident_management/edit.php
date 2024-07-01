@@ -42,6 +42,6 @@ Edit Incident
         <label for="actions_taken">Actions Taken</label>
         <textarea name="actions_taken" class="form-control"><?= $incident['actions_taken'] ?></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="btn btn-primary mt-4">Update</button>
 </form>
 <?= $this->endSection() ?>

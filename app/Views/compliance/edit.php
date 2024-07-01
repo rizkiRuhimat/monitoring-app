@@ -38,6 +38,6 @@ Edit Compliance
             <p>Current File: <a href="<?= base_url('uploads/' . $compliance['file_path']) ?>" target="_blank"><?= $compliance['file_path'] ?></a></p>
         <?php endif; ?>
     </div>
-    <button type="submit" class="btn btn-primary">Update Compliance</button>
+    <button type="submit" class="btn btn-primary mt-4">Update Compliance</button>
 </form>
 <?= $this->endSection() ?>

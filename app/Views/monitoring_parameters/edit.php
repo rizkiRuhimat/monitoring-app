@@ -47,7 +47,7 @@ Edit Monitoring Parameter
     </div>
 
 
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="btn btn-primary mt-4">Update</button>
 </form>
 </div>
 <?= $this->endSection() ?>

@@ -23,6 +23,6 @@ Edit Document
             <p>Current File: <a href="<?= base_url('uploads/' . $documentation['file_path']) ?>" target="_blank"><?= $documentation['file_path'] ?></a></p>
         <?php endif; ?>
     </div>
-    <button type="submit" class="btn btn-primary">Update Document</button>
+    <button type="submit" class="btn btn-primary mt-4">Update Document</button>
 </form>
 <?= $this->endSection() ?>
