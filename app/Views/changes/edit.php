@@ -40,6 +40,6 @@ Edit Change
             <p>Current File: <a href="<?= base_url('changes/download/' . $change['file_path']) ?>" target="_blank"><?= $change['file_path'] ?></a></p>
         <?php endif; ?>
     </div>
-    <button type="submit" class="btn btn-primary">Update Change</button>
+    <button type="submit" class="btn btn-primary mt-4">Update Change</button>
 </form>
 <?= $this->endSection() ?>
