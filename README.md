@@ -1,68 +1,83 @@
-# CodeIgniter 4 Application Starter
+To install CodeIgniter from your own GitHub repository, you'll need to clone your repository to your local development environment or server. Here are the steps:
 
-## What is CodeIgniter?
+1. Clone the Repository
+First, you'll need to clone your CodeIgniter repository from GitHub to your local machine or server.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+Navigate to your desired directory:
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+cd /var/www/
+Clone the repository:
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+git clone https://github.com/rizkiRuhimat/monitoring-app.git
+Replace https://github.com/your-username/your-codeigniter-repo.git with the actual URL of your GitHub repository.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+2. Configure the Project
+After cloning the repository, you may need to configure the CodeIgniter project to suit your environment.
 
-## Installation & updates
+Navigate to the project directory:
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+cd your-codeigniter-repo
+Set up your environment configuration:
+CodeIgniter uses an .env file to manage environment-specific configurations. You can create or update this file as needed.
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+3. Set Up Database Configuration
+If your project requires a database, you will need to set up the database configuration.
 
-## Setup
+Open the application/config/database.php file:
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+nano application/config/database.php
+Update the database settings to match your database credentials:
 
-## Important Change with index.php
+php
+Copy code
+$db['default'] = array(
+    'dsn'    => '',
+    'hostname' => 'localhost',
+    'username' => 'your-db-username',
+    'password' => 'your-db-password',
+    'database' => 'your-db-name',
+    'dbdriver' => 'mysqli',
+    'dbprefix' => '',
+    'pconnect' => FALSE,
+    'db_debug' => (ENVIRONMENT !== 'production'),
+    'cache_on' => FALSE,
+    'cachedir' => '',
+    'char_set' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'encrypt' => FALSE,
+    'compress' => FALSE,
+    'stricton' => FALSE,
+    'failover' => array(),
+    'save_queries' => TRUE
+);
+4. Install Dependencies
+If your CodeIgniter project has any dependencies managed by Composer, you need to install them.
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+Ensure Composer is installed on your system. You can check this by running:
+composer --version
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+Install the dependencies:
+composer install
 
-**Please** read the user guide for a better explanation of how CI4 works!
+5. Set Permissions (if necessary)
+Ensure the necessary directories have the correct permissions. For example, the writable directory may need to be writable by the web server:
 
-## Repository Management
+chmod -R 775 /path/to/your/codeigniter-repo/writable
+chown -R www-data:www-data /path/to/your/codeigniter-repo/writable
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+6. Run the Application
+Finally, you can run your CodeIgniter application. If you are using a local development server, you can use the built-in PHP server:
+php -S localhost:8000 -t public
+If you are deploying on a web server, make sure your web server is configured to serve the CodeIgniter application.
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 8.1 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+Full Example Workflow
+cd /var/www
+git clone https://github.com/rizkiRuhimat/monitoring-app.git
+cd your-codeigniter-repo
+nano application/config/database.php  # Update database configuration
+composer install  # Install dependencies
+chmod -R 775 writable
+chown -R www-data:www-data writable
+php -S localhost:8000 -t public  # Run the application locally
+By following these steps, you should be able to install and run CodeIgniter from your own GitHub repository. If you have any questions or encounter any issues, feel free to ask!
