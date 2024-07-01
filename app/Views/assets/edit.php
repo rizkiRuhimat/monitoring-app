@@ -32,6 +32,6 @@ Edit Asset
         <input type="checkbox" name="critical_status" class="form-check-input" <?= $asset['critical_status'] ? 'checked' : '' ?>>
         <label for="critical_status">Critical Status</label>
     </div>
-    <button type="submit" class="btn btn-primary">Update Asset</button>
+    <button type="submit" class="btn btn-primary mt-4">Update Asset</button>
 </form>
 <?= $this->endSection() ?>
