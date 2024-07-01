@@ -35,6 +35,6 @@ Add New Compliance
         <label for="file">Upload File</label>
         <input type="file" name="file" class="form-control">
     </div>
-    <button type="submit" class="btn btn-primary">Add Compliance</button>
+    <button type="submit" class="btn btn-primary mt-4">Add Compliance</button>
 </form>
 <?= $this->endSection() ?>
