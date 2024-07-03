@@ -5,49 +5,64 @@ Edit Monitoring Parameter
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<div class="container">
 <h2>Edit Monitoring Parameter</h2>
-<form action="/monitoring-parameters/update/<?= $parameter['id'] ?>" method="post">
+<form action="/monitoring_parameters/update/<?= $parameter['id'] ?>" method="post">
     <?= csrf_field() ?>
     <div class="form-group">
-        <label for="hostname">Hostname</label>
-        <input type="text" name="hostname" class="form-control" value="<?= $parameter['hostname'] ?>" required>
+        <label for="monitoring_tool">Monitoring Tool</label>
+        <input type="text" name="monitoring_tool" class="form-control" value="<?= $parameter['monitoring_tool'] ?>" required>
     </div>
     <div class="form-group">
         <label for="ip_address">IP Address</label>
         <input type="text" name="ip_address" class="form-control" value="<?= $parameter['ip_address'] ?>" required>
     </div>
     <div class="form-group">
-        <label for="parameter_name">Parameter Name</label>
-        <select name="parameter_name" class="form-control" required>
+        <label for="name_server">Name Server</label>
+        <input type="text" name="name_server" class="form-control" value="<?= $parameter['name_server'] ?>" required>
+    </div>
+    <div class="form-group">
+        <label for="functional_server">Functional Server</label>
+        <input type="text" name="functional_server" class="form-control" value="<?= $parameter['functional_server'] ?>" required>
+    </div>
+    <div class="form-group">
+        <label for="services">Services</label>
+        <select name="services" class="form-control" required>
+            <?php foreach ($service_names as $name): ?>
+                <option value="<?= $name ?>" <?= $parameter['services'] == $name ? 'selected' : '' ?>><?= $name ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="ports_service">Ports Service</label>
+        <input type="text" name="ports_service" class="form-control" value="<?= $parameter['ports_service'] ?>" required>
+    </div>
+    <div class="form-group">
+        <label for="resources">Resources</label>
+        <select name="resources" class="form-control" required>
             <?php foreach ($parameter_names as $name): ?>
-                <option value="<?= $name ?>" <?= $parameter['parameter_name'] == $name ? 'selected' : '' ?>><?= $name ?></option>
+                <option value="<?= $name ?>" <?= $parameter['resources'] == $name ? 'selected' : '' ?>><?= $name ?></option>
             <?php endforeach; ?>
         </select>
     </div>
     <div class="form-group">
-        <label for="service_name">Service Name</label>
-        <select name="service_name" class="form-control" required>
-            <?php foreach ($service_names as $service): ?>
-                <option value="<?= $service ?>" <?= $parameter['service_name'] == $service ? 'selected' : '' ?>><?= $service ?></option>
-            <?php endforeach; ?>
-        </select>
+        <label for="thresholds">Thresholds</label>
+        <input type="number" name="thresholds" class="form-control" value="<?= $parameter['thresholds'] ?>" required>
     </div>
     <div class="form-group">
-        <label for="threshold">Threshold</label>
-        <input type="text" name="threshold" class="form-control" value="<?= $parameter['threshold'] ?>" required>
-    </div>
-    <div class="form-group ml-4">
-        <input type="checkbox" name="kpi_indicator" class="form-check-input" <?= $parameter['kpi_indicator'] ? 'checked' : '' ?>>
         <label for="kpi_indicator">KPI Indicator</label>
+        <select name="kpi_indicator" class="form-control" required>
+            <option value="1" <?= $parameter['kpi_indicator'] == '1' ? 'selected' : '' ?>>Yes</option>
+            <option value="0" <?= $parameter['kpi_indicator'] == '0' ? 'selected' : '' ?>>No</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="tags">Tags</label>
+        <textarea name="tags" class="form-control"><?= $parameter['tags'] ?></textarea>
     </div>
     <div class="form-group">
         <label for="description">Description</label>
-        <textarea name="description" class="form-control" required><?= $parameter['description'] ?></textarea>
+        <textarea name="description" class="form-control"><?= $parameter['description'] ?></textarea>
     </div>
-
-
-    <button type="submit" class="btn btn-primary mt-4">Update</button>
+    <button type="submit" class="btn btn-primary">Update Parameter</button>
 </form>
-</div>
 <?= $this->endSection() ?>
