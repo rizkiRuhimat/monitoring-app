@@ -28,7 +28,7 @@
                     <a class="nav-link" href="/inventory">Inventory</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/monitoring-parameters">Monitoring Parameters</a>
+                    <a class="nav-link" href="/monitoring_parameters">Monitoring Parameters</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/alerts">Alert Configuration</a>
