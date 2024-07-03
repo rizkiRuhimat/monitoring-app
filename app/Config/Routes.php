@@ -27,12 +27,12 @@ $routes->get('/user-management/edit/(:num)', 'UserManagement::edit/$1');
 $routes->post('/user-management/update/(:num)', 'UserManagement::update/$1');
 $routes->get('/user-management/delete/(:num)', 'UserManagement::delete/$1');
 
-$routes->get('/monitoring-parameters', 'MonitoringParameters::index');
-$routes->get('/monitoring-parameters/create', 'MonitoringParameters::create');
-$routes->post('/monitoring-parameters/store', 'MonitoringParameters::store');
-$routes->get('/monitoring-parameters/edit/(:num)', 'MonitoringParameters::edit/$1');
-$routes->post('/monitoring-parameters/update/(:num)', 'MonitoringParameters::update/$1');
-$routes->get('/monitoring-parameters/delete/(:num)', 'MonitoringParameters::delete/$1');
+$routes->get('/monitoring_parameters', 'MonitoringParameters::index');
+$routes->get('/monitoring_parameters/create', 'MonitoringParameters::create');
+$routes->post('/monitoring_parameters/store', 'MonitoringParameters::store');
+$routes->get('/monitoring_parameters/edit/(:num)', 'MonitoringParameters::edit/$1');
+$routes->post('/monitoring_parameters/update/(:num)', 'MonitoringParameters::update/$1');
+$routes->get('/monitoring_parameters/delete/(:num)', 'MonitoringParameters::delete/$1');
 
 $routes->get('/incident-management', 'IncidentManagement::index');
 $routes->get('/incident-management/create', 'IncidentManagement::create');
