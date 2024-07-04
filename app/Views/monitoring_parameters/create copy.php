@@ -46,6 +46,18 @@ Add New Monitoring Parameter
         <input type="text" name="ports_service" class="form-control" required>
     </div>
     <div class="form-group">
+        <label for="resources">Resources</label>
+        <select name="resources" class="form-control chosen-select" required>
+            <?php foreach ($resource_names as $resource): ?>
+                <option value="<?= $resource ?>"><?= $resource ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="thresholds">Thresholds</label>
+        <input type="number" name="thresholds" class="form-control" required>
+    </div>
+    <div class="form-group">
         <label for="kpi_indicator">KPI Indicator</label>
         <select name="kpi_indicator" class="form-control" required>
             <option value="1">Yes</option>

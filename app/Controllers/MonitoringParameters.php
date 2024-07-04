@@ -19,7 +19,7 @@ class MonitoringParameters extends BaseController
         $data['tools_names'] = $this->getToolsNames();
         $data['service_names'] = $this->getServiceNames();
         $data['functional_servers'] = $this->getFunctionalServers();
-        $data['resource_names'] = $this->getResourceNames();
+        // $data['resource_names'] = $this->getResourceNames();
         return view('monitoring_parameters/create', $data);
     }
 
@@ -34,8 +34,8 @@ class MonitoringParameters extends BaseController
             'functional_server' => $this->request->getPost('functional_server'),
             'services' => $this->request->getPost('services'),
             'ports_service' => $this->request->getPost('ports_service'),
-            'resources' => $this->request->getPost('resources'),
-            'thresholds' => $this->request->getPost('thresholds'),
+            // 'resources' => $this->request->getPost('resources'),
+            // 'thresholds' => $this->request->getPost('thresholds'),
             'kpi_indicator' => $this->request->getPost('kpi_indicator') ? 1 : 0,
             'tags' => json_encode($tags),
             'description' => $this->request->getPost('description'),
@@ -54,7 +54,7 @@ class MonitoringParameters extends BaseController
         $data['tools_names'] = $this->getToolsNames();
         $data['service_names'] = $this->getServiceNames();
         $data['functional_servers'] = $this->getFunctionalServers();
-        $data['resource_names'] = $this->getResourceNames();
+        // $data['resource_names'] = $this->getResourceNames();
         return view('monitoring_parameters/edit', $data);
     }
 
@@ -69,8 +69,8 @@ class MonitoringParameters extends BaseController
             'functional_server' => $this->request->getPost('functional_server'),
             'services' => $this->request->getPost('services'),
             'ports_service' => $this->request->getPost('ports_service'),
-            'resources' => $this->request->getPost('resources'),
-            'thresholds' => $this->request->getPost('thresholds'),
+            // 'resources' => $this->request->getPost('resources'),
+            // 'thresholds' => $this->request->getPost('thresholds'),
             'kpi_indicator' => $this->request->getPost('kpi_indicator') ? 1 : 0,
             'tags' => json_encode($tags),
             'description' => $this->request->getPost('description'),

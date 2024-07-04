@@ -45,18 +45,6 @@ Edit Monitoring Parameter
         <input type="text" name="ports_service" class="form-control" value="<?= $parameter['ports_service'] ?>" required>
     </div>
     <div class="form-group">
-        <label for="resources">Resources</label>
-        <select name="resources" class="form-control chosen-select" required>
-            <?php foreach ($resource_names as $resource): ?>
-                <option value="<?= $resource ?>" <?= $parameter['resources'] == $resource ? 'selected' : '' ?>><?= $resource ?></option>
-            <?php endforeach; ?>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="thresholds">Thresholds</label>
-        <input type="number" name="thresholds" class="form-control" value="<?= $parameter['thresholds'] ?>" required>
-    </div>
-    <div class="form-group">
         <label for="kpi_indicator">KPI Indicator</label>
         <select name="kpi_indicator" class="form-control" required>
             <option value="1" <?= $parameter['kpi_indicator'] == '1' ? 'selected' : '' ?>>Yes</option>
