@@ -38,7 +38,16 @@ Monitoring Parameters
                 <td><?= $parameter['resources'] ?></td>
                 <td><?= $parameter['thresholds'] ?></td>
                 <td><?= $parameter['kpi_indicator'] == '1' ? 'Yes' : 'No' ?></td>
-                <td><?= json_encode($parameter['tags']) ?></td>
+                <td>
+                    <?php 
+                    $tags = json_decode($parameter['tags'], true); 
+                    if (is_array($tags)) {
+                        echo implode(', ', $tags);
+                    } else {
+                        echo $parameter['tags'];
+                    }
+                    ?>
+                </td>
                 <td><?= $parameter['description'] ?></td>
                 <td>
                     <a href="/monitoring_parameters/edit/<?= $parameter['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
