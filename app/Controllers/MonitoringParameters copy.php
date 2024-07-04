@@ -26,6 +26,7 @@ class MonitoringParameters extends BaseController
     public function store()
     {
         $model = new MonitoringParametersModel();
+        // $tags = $this->request->getPost('tags');
         $data = [
             'monitoring_tool' => $this->request->getPost('monitoring_tool'),
             'ip_address' => $this->request->getPost('ip_address'),
@@ -33,7 +34,10 @@ class MonitoringParameters extends BaseController
             'functional_server' => $this->request->getPost('functional_server'),
             'services' => $this->request->getPost('services'),
             'ports_service' => $this->request->getPost('ports_service'),
+            // 'resources' => $this->request->getPost('resources'),
+            // 'thresholds' => $this->request->getPost('thresholds'),
             'kpi_indicator' => $this->request->getPost('kpi_indicator') ? 1 : 0,
+            // 'tags' => json_encode($tags),
             'description' => $this->request->getPost('description'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
@@ -57,6 +61,7 @@ class MonitoringParameters extends BaseController
     public function update($id)
     {
         $model = new MonitoringParametersModel();
+        // $tags = $this->request->getPost('tags');
         $data = [
             'monitoring_tool' => $this->request->getPost('monitoring_tool'),
             'ip_address' => $this->request->getPost('ip_address'),
@@ -64,7 +69,10 @@ class MonitoringParameters extends BaseController
             'functional_server' => $this->request->getPost('functional_server'),
             'services' => $this->request->getPost('services'),
             'ports_service' => $this->request->getPost('ports_service'),
+            // 'resources' => $this->request->getPost('resources'),
+            // 'thresholds' => $this->request->getPost('thresholds'),
             'kpi_indicator' => $this->request->getPost('kpi_indicator') ? 1 : 0,
+            // 'tags' => json_encode($tags),
             'description' => $this->request->getPost('description'),
             'updated_at' => date('Y-m-d H:i:s'),
         ];
