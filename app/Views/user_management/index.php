@@ -7,7 +7,7 @@ User Management
 <?= $this->section('content') ?>
 <h2>User Management</h2>
 <a href="/user-management/create" class="btn btn-primary mb-3">Create User</a>
-<table id="datatable" class="display">
+<table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>Username</th>
