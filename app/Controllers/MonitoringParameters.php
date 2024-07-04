@@ -19,14 +19,14 @@ class MonitoringParameters extends BaseController
         $data['tools_names'] = $this->getToolsNames();
         $data['service_names'] = $this->getServiceNames();
         $data['functional_servers'] = $this->getFunctionalServers();
-        // $data['resource_names'] = $this->getResourceNames();
+        $data['resource_names'] = $this->getResourceNames();
         return view('monitoring_parameters/create', $data);
     }
 
     public function store()
     {
         $model = new MonitoringParametersModel();
-        $tags = $this->request->getPost('tags');
+        // $tags = $this->request->getPost('tags');
         $data = [
             'monitoring_tool' => $this->request->getPost('monitoring_tool'),
             'ip_address' => $this->request->getPost('ip_address'),
@@ -61,7 +61,7 @@ class MonitoringParameters extends BaseController
     public function update($id)
     {
         $model = new MonitoringParametersModel();
-        $tags = $this->request->getPost('tags');
+        // $tags = $this->request->getPost('tags');
         $data = [
             'monitoring_tool' => $this->request->getPost('monitoring_tool'),
             'ip_address' => $this->request->getPost('ip_address'),
