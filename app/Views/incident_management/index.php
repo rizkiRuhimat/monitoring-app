@@ -7,7 +7,7 @@ Incident Management
 <?= $this->section('content') ?>
 <h2>Incident Management</h2>
 <a href="/incident-management/create" class="btn btn-primary mb-3">Report New Incident</a>
-<table id="datatable" class="display">
+<table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>Title</th>

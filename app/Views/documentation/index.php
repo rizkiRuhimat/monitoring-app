@@ -7,7 +7,7 @@ Documentation Management
 <?= $this->section('content') ?>
 <h2>Documentation Management</h2>
 <a href="/documentation/create" class="btn btn-primary mb-3">Add New Document</a>
-<table id="datatable" class="display">
+<table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>Title</th>
