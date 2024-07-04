@@ -22,7 +22,7 @@ Add New Monitoring Parameter
     </div>
     <div class="form-group">
         <label for="functional_server">Functional Server</label>
-        <select name="functional_server" class="form-control" required>
+        <select name="functional_server" class="form-control chosen-select" required>
             <?php foreach ($functional_servers as $server): ?>
                 <option value="<?= $server ?>"><?= $server ?></option>
             <?php endforeach; ?>
@@ -30,7 +30,7 @@ Add New Monitoring Parameter
     </div>
     <div class="form-group">
         <label for="services">Services</label>
-        <select name="services" class="form-control" required>
+        <select name="services" class="form-control chosen-select" required>
             <?php foreach ($service_names as $name): ?>
                 <option value="<?= $name ?>"><?= $name ?></option>
             <?php endforeach; ?>
@@ -42,7 +42,7 @@ Add New Monitoring Parameter
     </div>
     <div class="form-group">
         <label for="resources">Resources</label>
-        <select name="resources" class="form-control" required>
+        <select name="resources" class="form-control chosen-select" required>
             <?php foreach ($resource_names as $resource): ?>
                 <option value="<?= $resource ?>"><?= $resource ?></option>
             <?php endforeach; ?>
@@ -69,4 +69,12 @@ Add New Monitoring Parameter
     </div>
     <button type="submit" class="btn btn-primary">Add Parameter</button>
 </form>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.chosen-select').chosen();
+});
+</script>
 <?= $this->endSection() ?>

@@ -25,7 +25,7 @@ class MonitoringParameters extends BaseController
     public function store()
     {
         $model = new MonitoringParametersModel();
-        $tags = json_decode($this->request->getPost('tags'), true);
+        $tags = $this->request->getPost('tags');
         $data = [
             'monitoring_tool' => $this->request->getPost('monitoring_tool'),
             'ip_address' => $this->request->getPost('ip_address'),
@@ -59,7 +59,7 @@ class MonitoringParameters extends BaseController
     public function update($id)
     {
         $model = new MonitoringParametersModel();
-        $tags = json_decode($this->request->getPost('tags'), true);
+        $tags = $this->request->getPost('tags');
         $data = [
             'monitoring_tool' => $this->request->getPost('monitoring_tool'),
             'ip_address' => $this->request->getPost('ip_address'),
