@@ -35,9 +35,9 @@ Edit Monitoring Parameter
     </div>
     <div class="form-group">
         <label for="services">Services</label>
-        <select name="services" class="form-control chosen-select" required>
+        <select class="form-control select2" multiple="multiple" name="services[]">
             <?php foreach ($service_names as $name): ?>
-                <option value="<?= $name ?>" <?= $parameter['services'] == $name ? 'selected' : '' ?>><?= $name ?></option>
+                <option value="<?= $name ?>"><?= $name ?></option>
             <?php endforeach; ?>
         </select>
     </div>
@@ -59,12 +59,17 @@ Edit Monitoring Parameter
     <button type="submit" class="btn btn-primary mt-4">Update Parameter</button>
 </form>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+<!-- Load file CSS Bootstrap dan Select2 melalui CDN -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<!-- Load file JS untuk JQuery dan Selec2.js melalui CDN -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script>
-$(document).ready(function() {
-    $('.chosen-select').chosen();
-});
+    $(document).ready(function () {
+        $(".select2").select2({
+        });
+    });
 </script>
 </div>
 <?= $this->endSection() ?>
