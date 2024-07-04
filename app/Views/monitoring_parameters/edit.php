@@ -10,6 +10,10 @@ Edit Monitoring Parameter
     <?= csrf_field() ?>
     <div class="form-group">
         <label for="monitoring_tool">Monitoring Tool</label>
+        <?php foreach ($tools_names as $tools): ?>
+                <option value="<?= $tools ?>" <?= $parameter['tools_names'] == $tools ? 'selected' : '' ?>><?= $tools ?></option>
+            <?php endforeach; ?>
+        </select>
         <input type="text" name="monitoring_tool" class="form-control" value="<?= $parameter['monitoring_tool'] ?>" required>
     </div>
     <div class="form-group">

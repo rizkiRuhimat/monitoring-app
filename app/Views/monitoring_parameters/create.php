@@ -10,6 +10,11 @@ Add New Monitoring Parameter
     <?= csrf_field() ?>
     <div class="form-group">
         <label for="monitoring_tool">Monitoring Tool</label>
+        <select name="functional_server" class="form-control chosen-select" required>
+            <?php foreach ($tools_names as $tools): ?>
+                <option value="<?= $tools ?>"><?= $tools ?></option>
+            <?php endforeach; ?>
+        </select>
         <input type="text" name="monitoring_tool" class="form-control" required>
     </div>
     <div class="form-group">

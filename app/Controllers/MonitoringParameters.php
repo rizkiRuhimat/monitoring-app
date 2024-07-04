@@ -16,6 +16,7 @@ class MonitoringParameters extends BaseController
     public function create()
     {
         $data['parameter_names'] = $this->getParameterNames();
+        $data['tools_names'] = $this->getToolsNames();
         $data['service_names'] = $this->getServiceNames();
         $data['functional_servers'] = $this->getFunctionalServers();
         $data['resource_names'] = $this->getResourceNames();
@@ -50,6 +51,7 @@ class MonitoringParameters extends BaseController
         $model = new MonitoringParametersModel();
         $data['parameter'] = $model->find($id);
         $data['parameter_names'] = $this->getParameterNames();
+        $data['tools_names'] = $this->getToolsNames();
         $data['service_names'] = $this->getServiceNames();
         $data['functional_servers'] = $this->getFunctionalServers();
         $data['resource_names'] = $this->getResourceNames();
@@ -96,14 +98,33 @@ class MonitoringParameters extends BaseController
             // Add more parameter names as needed
         ];
     }
+    
+    private function getToolsNames()
+    {
+        // Define the list of service names
+        return [
+            'PRTG',
+            'Grafana',
+            'Native',
+            // Add more service names as needed
+        ];
+    }
+
 
     private function getServiceNames()
     {
         // Define the list of service names
         return [
-            'Web Server',
-            'Database Server',
-            'Application Server',
+            'Apache2',
+            'Docker',
+            'Kannel',
+            'MSSQL Server',
+            'Mysql',
+            'NginX',
+            'PostgreSQL',
+            'Redis',
+            'RabbitMQ',
+            'Others',
             // Add more service names as needed
         ];
     }
@@ -112,9 +133,9 @@ class MonitoringParameters extends BaseController
     {
         // Define the list of functional servers
         return [
-            'Server 1',
-            'Server 2',
-            'Server 3',
+            'Web Server',
+            'Database Server',
+            'Application Server',
             // Add more functional servers as needed
         ];
     }
