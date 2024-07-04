@@ -59,12 +59,6 @@ Add New Monitoring Parameter
     <button type="submit" class="btn btn-primary mt-4">Add Parameter</button>
 </form>
 
-<!-- Load file CSS Bootstrap dan Select2 melalui CDN -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-<!-- Load file JS untuk JQuery dan Selec2.js melalui CDN -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script>
     $(document).ready(function () {
         $(".select2").select2({

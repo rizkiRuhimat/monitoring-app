@@ -34,4 +34,19 @@ Inventory List
         <?php endforeach; ?>
     </tbody>
 </table>
+<script>
+$(document).ready(function() {
+    if (!$.fn.dataTable.isDataTable('#datatable')) {
+        $('#datatable').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        });
+    }
+});
+</script>
 <?= $this->endSection() ?>
