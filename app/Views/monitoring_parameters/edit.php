@@ -60,8 +60,8 @@ Edit Monitoring Parameter
         </select>
     </div>
     <div class="form-group">
-        <label for="tags">Tags</label>
-        <textarea name="tags" class="form-control"><?= $parameter['tags'] ?></textarea>
+        <label for="tags">Tags (JSON format)</label>
+        <textarea name="tags" class="form-control" rows="3" required><?= json_encode($parameter['tags']) ?></textarea>
     </div>
     <div class="form-group">
         <label for="description">Description</label>

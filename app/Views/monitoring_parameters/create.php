@@ -60,8 +60,8 @@ Add New Monitoring Parameter
         </select>
     </div>
     <div class="form-group">
-        <label for="tags">Tags</label>
-        <textarea name="tags" class="form-control"></textarea>
+        <label for="tags">Tags (JSON format)</label>
+        <textarea name="tags" class="form-control" rows="3" required></textarea>
     </div>
     <div class="form-group">
         <label for="description">Description</label>
