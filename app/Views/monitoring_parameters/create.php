@@ -22,7 +22,11 @@ Add New Monitoring Parameter
     </div>
     <div class="form-group">
         <label for="functional_server">Functional Server</label>
-        <input type="text" name="functional_server" class="form-control" required>
+        <select name="functional_server" class="form-control" required>
+            <?php foreach ($functional_servers as $server): ?>
+                <option value="<?= $server ?>"><?= $server ?></option>
+            <?php endforeach; ?>
+        </select>
     </div>
     <div class="form-group">
         <label for="services">Services</label>
@@ -39,8 +43,8 @@ Add New Monitoring Parameter
     <div class="form-group">
         <label for="resources">Resources</label>
         <select name="resources" class="form-control" required>
-            <?php foreach ($parameter_names as $name): ?>
-                <option value="<?= $name ?>"><?= $name ?></option>
+            <?php foreach ($resource_names as $resource): ?>
+                <option value="<?= $resource ?>"><?= $resource ?></option>
             <?php endforeach; ?>
         </select>
     </div>

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 use App\Models\MonitoringParametersModel;
@@ -16,6 +17,8 @@ class MonitoringParameters extends BaseController
     {
         $data['parameter_names'] = $this->getParameterNames();
         $data['service_names'] = $this->getServiceNames();
+        $data['functional_servers'] = $this->getFunctionalServers();
+        $data['resource_names'] = $this->getResourceNames();
         return view('monitoring_parameters/create', $data);
     }
 
@@ -23,16 +26,22 @@ class MonitoringParameters extends BaseController
     {
         $model = new MonitoringParametersModel();
         $data = [
-            'parameter_name' => $this->request->getPost('parameter_name'),
-            'threshold' => $this->request->getPost('threshold'),
-            'kpi_indicator' => $this->request->getPost('kpi_indicator') ? 1 : 0,
-            'description' => $this->request->getPost('description'),
-            'hostname' => $this->request->getPost('hostname'),
+            'monitoring_tool' => $this->request->getPost('monitoring_tool'),
             'ip_address' => $this->request->getPost('ip_address'),
-            'service_name' => $this->request->getPost('service_name')
+            'name_server' => $this->request->getPost('name_server'),
+            'functional_server' => $this->request->getPost('functional_server'),
+            'services' => $this->request->getPost('services'),
+            'ports_service' => $this->request->getPost('ports_service'),
+            'resources' => $this->request->getPost('resources'),
+            'thresholds' => $this->request->getPost('thresholds'),
+            'kpi_indicator' => $this->request->getPost('kpi_indicator') ? 1 : 0,
+            'tags' => $this->request->getPost('tags'),
+            'description' => $this->request->getPost('description'),
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
         ];
         $model->save($data);
-        return redirect()->to('/monitoring-parameters');
+        return redirect()->to('/monitoring_parameters');
     }
 
     public function edit($id)
@@ -41,6 +50,8 @@ class MonitoringParameters extends BaseController
         $data['parameter'] = $model->find($id);
         $data['parameter_names'] = $this->getParameterNames();
         $data['service_names'] = $this->getServiceNames();
+        $data['functional_servers'] = $this->getFunctionalServers();
+        $data['resource_names'] = $this->getResourceNames();
         return view('monitoring_parameters/edit', $data);
     }
 
@@ -48,23 +59,28 @@ class MonitoringParameters extends BaseController
     {
         $model = new MonitoringParametersModel();
         $data = [
-            'parameter_name' => $this->request->getPost('parameter_name'),
-            'threshold' => $this->request->getPost('threshold'),
-            'kpi_indicator' => $this->request->getPost('kpi_indicator') ? 1 : 0,
-            'description' => $this->request->getPost('description'),
-            'hostname' => $this->request->getPost('hostname'),
+            'monitoring_tool' => $this->request->getPost('monitoring_tool'),
             'ip_address' => $this->request->getPost('ip_address'),
-            'service_name' => $this->request->getPost('service_name')
+            'name_server' => $this->request->getPost('name_server'),
+            'functional_server' => $this->request->getPost('functional_server'),
+            'services' => $this->request->getPost('services'),
+            'ports_service' => $this->request->getPost('ports_service'),
+            'resources' => $this->request->getPost('resources'),
+            'thresholds' => $this->request->getPost('thresholds'),
+            'kpi_indicator' => $this->request->getPost('kpi_indicator') ? 1 : 0,
+            'tags' => $this->request->getPost('tags'),
+            'description' => $this->request->getPost('description'),
+            'updated_at' => date('Y-m-d H:i:s'),
         ];
         $model->update($id, $data);
-        return redirect()->to('/monitoring-parameters');
+        return redirect()->to('/monitoring_parameters');
     }
 
     public function delete($id)
     {
         $model = new MonitoringParametersModel();
         $model->delete($id);
-        return redirect()->to('/monitoring-parameters');
+        return redirect()->to('/monitoring_parameters');
     }
 
     private function getParameterNames()
@@ -87,6 +103,29 @@ class MonitoringParameters extends BaseController
             'Database Server',
             'Application Server',
             // Add more service names as needed
+        ];
+    }
+
+    private function getFunctionalServers()
+    {
+        // Define the list of functional servers
+        return [
+            'Server 1',
+            'Server 2',
+            'Server 3',
+            // Add more functional servers as needed
+        ];
+    }
+
+    private function getResourceNames()
+    {
+        // Define the list of resource names
+        return [
+            'CPU',
+            'Memory',
+            'Disk',
+            'Network',
+            // Add more resource names as needed
         ];
     }
 }
