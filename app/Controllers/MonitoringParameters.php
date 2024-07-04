@@ -36,7 +36,7 @@ class MonitoringParameters extends BaseController
             'kpi_indicator' => $this->request->getPost('kpi_indicator') ? 1 : 0,
             'description' => $this->request->getPost('description'),
             'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
         ];
         $model->save($data);
         return redirect()->to('/monitoring_parameters');
