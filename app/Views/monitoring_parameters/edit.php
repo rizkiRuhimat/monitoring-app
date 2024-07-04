@@ -12,7 +12,7 @@ Edit Monitoring Parameter
     <div class="form-group">
         <label for="monitoring_tool">Monitoring Tool</label>
         <?php foreach ($tools_names as $tools): ?>
-                <option value="<?= $tools ?>" <?= $parameter['monitoring_tool'] == $tools ? 'selected' : '' ?><?= $tools ?></option>
+            <option value="<?= $tools ?>" <?= $parameter['monitoring_tool'] == $tools ? 'selected' : '' ?>><?= $tools ?></option>
             <?php endforeach; ?>
         </select>
     </div>
