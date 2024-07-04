@@ -17,7 +17,10 @@ Monitoring Parameters
             <th>Functional Server</th>
             <th>Services</th>
             <th>Ports Service</th>
+            <th>Resources</th>
+            <th>Thresholds</th>
             <th>KPI Indicator</th>
+            <th>Tags</th>
             <th>Description</th>
             <th>Actions</th>
         </tr>
@@ -32,7 +35,19 @@ Monitoring Parameters
                 <td><?= $parameter['functional_server'] ?></td>
                 <td><?= $parameter['services'] ?></td>
                 <td><?= $parameter['ports_service'] ?></td>
+                <td><?= $parameter['resources'] ?></td>
+                <td><?= $parameter['thresholds'] ?></td>
                 <td><?= $parameter['kpi_indicator'] == '1' ? 'Yes' : 'No' ?></td>
+                <td>
+                    <?php 
+                    $tags = json_decode($parameter['tags'], true); 
+                    if (is_array($tags)) {
+                        echo implode(', ', $tags);
+                    } else {
+                        echo $parameter['tags'];
+                    }
+                    ?>
+                </td>
                 <td><?= $parameter['description'] ?></td>
                 <td>
                     <a href="/monitoring_parameters/edit/<?= $parameter['id'] ?>" class="btn btn-warning btn-sm">Edit</a>

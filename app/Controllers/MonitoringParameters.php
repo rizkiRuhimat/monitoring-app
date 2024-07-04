@@ -37,7 +37,7 @@ class MonitoringParameters extends BaseController
             // 'resources' => $this->request->getPost('resources'),
             // 'thresholds' => $this->request->getPost('thresholds'),
             'kpi_indicator' => $this->request->getPost('kpi_indicator') ? 1 : 0,
-            'tags' => json_encode($tags),
+            // 'tags' => json_encode($tags),
             'description' => $this->request->getPost('description'),
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
@@ -72,7 +72,7 @@ class MonitoringParameters extends BaseController
             // 'resources' => $this->request->getPost('resources'),
             // 'thresholds' => $this->request->getPost('thresholds'),
             'kpi_indicator' => $this->request->getPost('kpi_indicator') ? 1 : 0,
-            'tags' => json_encode($tags),
+            // 'tags' => json_encode($tags),
             'description' => $this->request->getPost('description'),
             'updated_at' => date('Y-m-d H:i:s'),
         ];
