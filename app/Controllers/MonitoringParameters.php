@@ -54,7 +54,7 @@ class MonitoringParameters extends BaseController
         $data['tools_names'] = $this->getToolsNames();
         $data['service_names'] = $this->getServiceNames();
         $data['functional_servers'] = $this->getFunctionalServers();
-        // $data['resource_names'] = $this->getResourceNames();
+        $data['resource_names'] = $this->getResourceNames();
         return view('monitoring_parameters/edit', $data);
     }
 
