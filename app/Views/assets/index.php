@@ -7,7 +7,7 @@ Asset Management
 <?= $this->section('content') ?>
 <h2>Asset Management</h2>
 <a href="/assets/create" class="btn btn-primary mb-3">Add New Asset</a>
-<table id="datatable" class="display">
+<table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>Asset Name</th>

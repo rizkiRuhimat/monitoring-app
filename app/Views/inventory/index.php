@@ -7,7 +7,7 @@ Inventory List
 <?= $this->section('content') ?>
 <h2>Inventory List</h2>
 <a href="/inventory/create" class="btn btn-primary mb-3">Add New Item</a>
-<table id="datatable" class="display">
+<table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>Asset Name</th>

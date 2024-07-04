@@ -7,7 +7,7 @@ Compliance Management
 <?= $this->section('content') ?>
 <h2>Compliance Management</h2>
 <a href="/compliance/create" class="btn btn-primary mb-3">Add New Compliance</a>
-<table id="datatable" class="display">
+<table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>Compliance Metric</th>
