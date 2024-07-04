@@ -15,7 +15,6 @@ Add New Monitoring Parameter
                 <option value="<?= $tools ?>"><?= $tools ?></option>
             <?php endforeach; ?>
         </select>
-        <input type="text" name="monitoring_tool" class="form-control" required>
     </div>
     <div class="form-group">
         <label for="ip_address">IP Address</label>
@@ -72,7 +71,7 @@ Add New Monitoring Parameter
         <label for="description">Description</label>
         <textarea name="description" class="form-control"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Add Parameter</button>
+    <button type="submit" class="btn btn-primary mt-4">Add Parameter</button>
 </form>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">

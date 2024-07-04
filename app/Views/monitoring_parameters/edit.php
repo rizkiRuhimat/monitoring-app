@@ -14,7 +14,7 @@ Edit Monitoring Parameter
                 <option value="<?= $tools ?>" <?= $parameter['tools_names'] == $tools ? 'selected' : '' ?>><?= $tools ?></option>
             <?php endforeach; ?>
         </select>
-        <input type="text" name="monitoring_tool" class="form-control" value="<?= $parameter['monitoring_tool'] ?>" required>
+        <!-- <input type="text" name="monitoring_tool" class="form-control" value="<?= $parameter['monitoring_tool'] ?>" required> -->
     </div>
     <div class="form-group">
         <label for="ip_address">IP Address</label>
@@ -71,7 +71,7 @@ Edit Monitoring Parameter
         <label for="description">Description</label>
         <textarea name="description" class="form-control"><?= $parameter['description'] ?></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Update Parameter</button>
+    <button type="submit" class="btn btn-primary mt-4">Update Parameter</button>
 </form>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
