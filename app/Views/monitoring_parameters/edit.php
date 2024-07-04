@@ -5,6 +5,7 @@ Edit Monitoring Parameter
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
+<div class="container">
 <h2>Edit Monitoring Parameter</h2>
 <form action="/monitoring_parameters/update/<?= $parameter['id'] ?>" method="post">
     <?= csrf_field() ?>
@@ -81,4 +82,5 @@ $(document).ready(function() {
     $('.chosen-select').chosen();
 });
 </script>
+</div>
 <?= $this->endSection() ?>

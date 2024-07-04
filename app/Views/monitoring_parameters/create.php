@@ -5,6 +5,7 @@ Add New Monitoring Parameter
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
+<div class="container">
 <h2>Add New Monitoring Parameter</h2>
 <form action="/monitoring_parameters/store" method="post">
     <?= csrf_field() ?>
@@ -81,4 +82,5 @@ $(document).ready(function() {
     $('.chosen-select').chosen();
 });
 </script>
+</div>
 <?= $this->endSection() ?>
