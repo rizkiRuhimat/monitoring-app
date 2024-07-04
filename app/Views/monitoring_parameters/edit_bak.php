@@ -11,8 +11,9 @@ Edit Monitoring Parameter
     <?= csrf_field() ?>
     <div class="form-group">
         <label for="monitoring_tool">Monitoring Tool</label>
+        <select name="monitoring_tool" class="form-control chosen-select" required>
         <?php foreach ($tools_names as $tools): ?>
-                <option value="<?= $tools ?>" <?= $parameter['tools_names'] == $tools ? 'selected' : '' ?>><?= $tools ?></option>
+                <option value="<?= $tools ?>" <?= $parameter['monitoring_tool'] == $tools ? 'selected' : '' ?>><?= $tools ?></option>
             <?php endforeach; ?>
         </select>
     </div>
