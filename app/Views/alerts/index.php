@@ -7,7 +7,7 @@ Alert Configuration
 <?= $this->section('content') ?>
 <h2>Alert Configuration</h2>
 <a href="/alerts/create" class="btn btn-primary mb-3">Create New Alert</a>
-<table id="datatable" class="display">
+<table id="datatable" class="table table-striped table-bordered">
     <thead>
         <tr>
             <th>Type</th>
