@@ -97,6 +97,7 @@ class MonitoringParameters extends BaseController
         return [
             'PRTG',
             'Grafana',
+            'InfluxDB',
             'Native',
             // Add more service names as needed
         ];
@@ -128,6 +129,7 @@ class MonitoringParameters extends BaseController
             'Web Server',
             'Database Server',
             'Application Server',
+            'Others',
             // Add more functional servers as needed
         ];
     }
