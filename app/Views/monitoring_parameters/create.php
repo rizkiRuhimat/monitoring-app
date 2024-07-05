@@ -5,78 +5,82 @@ Add New Monitoring Parameter
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<h2>Add New Monitoring Parameter</h2>
-<form action="/monitoring_parameters/store" method="post">
-    <?= csrf_field() ?>
-    <div class="form-group">
-        <label for="monitor_category">Monitor Category</label>
-        <select name="monitor_category" id="monitor_category" class="form-control chosen-select" required>
-            <option value="">Select Category</option>
-            <option value="server">Server</option>
-            <option value="services">Services</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="ip_server">IP Server</label>
-        <input type="text" name="ip_server" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <label for="environment">Environment</label>
-        <input type="text" name="environment" class="form-control" required>
-    </div>
-    <div class="form-group">
-        <label for="id">ID</label>
-        <input type="text" name="id" class="form-control" required>
-    </div>
-    <div id="server_fields" style="display: none;">
+<div class="container">
+    <h2>Add New Monitoring Parameter</h2>
+    <form action="/monitoring_parameters/store" method="post">
+        <?= csrf_field() ?>
         <div class="form-group">
-            <label for="resources">Resources (JSON format)</label>
-            <textarea name="resources" class="form-control" rows="3"></textarea>
+            <label for="monitoring_tool">Monitoring Tool</label>
+            <select name="functional_server" class="form-control chosen-select" required>
+                <?php foreach ($tools_names as $tools) : ?>
+                <option value="<?= $tools ?>"><?= $tools ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
         <div class="form-group">
-            <label for="warning_thresholds">Warning Thresholds (JSON format)</label>
-            <textarea name="warning_thresholds" class="form-control" rows="3"></textarea>
+            <label for="ip_address">IP Address</label>
+            <input type="text" name="ip_address" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="err_thresholds">Error Thresholds (JSON format)</label>
-            <textarea name="err_thresholds" class="form-control" rows="3"></textarea>
-        </div>
-    </div>
-    <div id="services_fields" style="display: none;">
-        <div class="form-group">
-            <label for="services_name">Services Name (JSON format)</label>
-            <textarea name="services_name" class="form-control" rows="3"></textarea>
+            <label for="name_server">Name Server</label>
+            <input type="text" name="name_server" class="form-control" required>
         </div>
         <div class="form-group">
-            <label for="service_ports">Service Ports (JSON format)</label>
-            <textarea name="service_ports" class="form-control" rows="3"></textarea>
+            <label for="functional_server">Functional Server</label>
+            <select name="functional_server" class="form-control chosen-select" required>
+                <?php foreach ($functional_servers as $server) : ?>
+                <option value="<?= $server ?>"><?= $server ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
         <div class="form-group">
-            <label for="status">Status (JSON format)</label>
-            <textarea name="status" class="form-control" rows="3"></textarea>
+            <label for="services">Services</label>
+            <select name="services" class="form-control chosen-select" required>
+                <?php foreach ($service_names as $name) : ?>
+                <option value="<?= $name ?>"><?= $name ?></option>
+                <?php endforeach; ?>
+            </select>
         </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Add Parameter</button>
-</form>
+        <div class="form-group">
+            <label for="ports_service">Ports Service</label>
+            <input type="text" name="ports_service" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="resources">Resources</label>
+            <select name="resources" class="form-control chosen-select" required>
+                <?php foreach ($resource_names as $resource) : ?>
+                <option value="<?= $resource ?>"><?= $resource ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="thresholds">Thresholds</label>
+            <input type="number" name="thresholds" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="kpi_indicator">KPI Indicator</label>
+            <select name="kpi_indicator" class="form-control" required>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="tags">Tags (JSON format)</label>
+            <textarea name="tags" class="form-control" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary mt-4">Add Parameter</button>
+    </form>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
-<script>
-$(document).ready(function() {
-    $('.chosen-select').chosen();
-    $('#monitor_category').change(function() {
-        var category = $(this).val();
-        if (category == 'server') {
-            $('#server_fields').show();
-            $('#services_fields').hide();
-        } else if (category == 'services') {
-            $('#server_fields').hide();
-            $('#services_fields').show();
-        } else {
-            $('#server_fields').hide();
-            $('#services_fields').hide();
-        }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.chosen-select').chosen();
     });
-});
-</script>
+    </script>
+</div>
 <?= $this->endSection() ?>
