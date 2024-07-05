@@ -5,71 +5,74 @@ Edit Monitoring Parameter
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<div class="container">
 <h2>Edit Monitoring Parameter</h2>
 <form action="/monitoring_parameters/update/<?= $parameter['id'] ?>" method="post">
     <?= csrf_field() ?>
     <div class="form-group">
-        <label for="monitoring_tool">Monitoring Tool</label>
-        <select name="monitoring_tool" class="form-control chosen-select" required>
-            <?php foreach ($tools_names as $tools): ?>
-                <option value="<?= $tools ?>" <?= $parameter['monitoring_tool'] == $tools ? 'selected' : '' ?>><?= $tools ?></option>
-            <?php endforeach; ?>
+        <label for="monitor_category">Monitor Category</label>
+        <select name="monitor_category" id="monitor_category" class="form-control chosen-select" required>
+            <option value="">Select Category</option>
+            <option value="server" <?= $parameter['monitor_category'] == 'server' ? 'selected' : '' ?>>Server</option>
+            <option value="services" <?= $parameter['monitor_category'] == 'services' ? 'selected' : '' ?>>Services</option>
         </select>
     </div>
     <div class="form-group">
-        <label for="ip_address">IP Address</label>
-        <input type="text" name="ip_address" class="form-control" value="<?= $parameter['ip_address'] ?>" required>
+        <label for="ip_server">IP Server</label>
+        <input type="text" name="ip_server" class="form-control" value="<?= $parameter['ip_server'] ?>" required>
     </div>
     <div class="form-group">
-        <label for="name_server">Name Server</label>
-        <input type="text" name="name_server" class="form-control" value="<?= $parameter['name_server'] ?>" required>
+        <label for="environment">Environment</label>
+        <input type="text" name="environment" class="form-control" value="<?= $parameter['environment'] ?>" required>
     </div>
-    <div class="form-group">
-        <label for="functional_server">Functional Server</label>
-        <select name="functional_server" class="form-control chosen-select" required>
-            <?php foreach ($functional_servers as $server): ?>
-                <option value="<?= $server ?>" <?= $parameter['functional_server'] == $server ? 'selected' : '' ?>><?= $server ?></option>
-            <?php endforeach; ?>
-        </select>
+    <div id="server_fields" style="display: <?= $parameter['monitor_category'] == 'server' ? 'block' : 'none' ?>;">
+        <div class="form-group">
+            <label for="resources">Resources (JSON format)</label>
+            <textarea name="resources" class="form-control" rows="3"><?= json_encode(json_decode($parameter['resources'], true)) ?></textarea>
+        </div>
+        <div class="form-group">
+            <label for="warning_thresholds">Warning Thresholds (JSON format)</label>
+            <textarea name="warning_thresholds" class="form-control" rows="3"><?= json_encode(json_decode($parameter['warning_thresholds'], true)) ?></textarea>
+        </div>
+        <div class="form-group">
+            <label for="err_thresholds">Error Thresholds (JSON format)</label>
+            <textarea name="err_thresholds" class="form-control" rows="3"><?= json_encode(json_decode($parameter['err_thresholds'], true)) ?></textarea>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="services">Services</label>
-        <select class="form-control select2" multiple="multiple" name="services[]">
-            <?php foreach ($service_names as $name): ?>
-                <option value="<?= $name ?>"><?= $name ?></option>
-            <?php endforeach; ?>
-        </select>
+    <div id="services_fields" style="display: <?= $parameter['monitor_category'] == 'services' ? 'block' : 'none' ?>;">
+        <div class="form-group">
+            <label for="services_name">Services Name (JSON format)</label>
+            <textarea name="services_name" class="form-control" rows="3"><?= json_encode(json_decode($parameter['services_name'], true)) ?></textarea>
+        </div>
+        <div class="form-group">
+            <label for="service_ports">Service Ports (JSON format)</label>
+            <textarea name="service_ports" class="form-control" rows="3"><?= json_encode(json_decode($parameter['service_ports'], true)) ?></textarea>
+        </div>
+        <div class="form-group">
+            <label for="status">Status (JSON format)</label>
+            <textarea name="status" class="form-control" rows="3"><?= json_encode(json_decode($parameter['status'], true)) ?></textarea>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="ports_service">Ports Service</label>
-        <input type="text" name="ports_service" class="form-control" value="<?= $parameter['ports_service'] ?>" required>
-    </div>
-    <div class="form-group">
-        <label for="kpi_indicator">KPI Indicator</label>
-        <select name="kpi_indicator" class="form-control" required>
-            <option value="1" <?= $parameter['kpi_indicator'] == '1' ? 'selected' : '' ?>>Yes</option>
-            <option value="0" <?= $parameter['kpi_indicator'] == '0' ? 'selected' : '' ?>>No</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="description">Description</label>
-        <textarea name="description" class="form-control"><?= $parameter['description'] ?></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary mt-4">Update Parameter</button>
+    <button type="submit" class="btn btn-primary">Update Parameter</button>
 </form>
 
-<!-- Load file CSS Bootstrap dan Select2 melalui CDN -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-<!-- Load file JS untuk JQuery dan Selec2.js melalui CDN -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
 <script>
-    $(document).ready(function () {
-        $(".select2").select2({
-        });
+$(document).ready(function() {
+    $('.chosen-select').chosen();
+    $('#monitor_category').change(function() {
+        var category = $(this).val();
+        if (category == 'server') {
+            $('#server_fields').show();
+            $('#services_fields').hide();
+        } else if (category == 'services') {
+            $('#server_fields').hide();
+            $('#services_fields').show();
+        } else {
+            $('#server_fields').hide();
+            $('#services_fields').hide();
+        }
     });
+});
 </script>
-</div>
 <?= $this->endSection() ?>

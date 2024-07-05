@@ -16,7 +16,6 @@ class MonitoringParameters extends BaseController
     public function create()
     {
         $data['parameter_names'] = $this->getParameterNames();
-        $data['tools_names'] = $this->getToolsNames();
         $data['service_names'] = $this->getServiceNames();
         $data['functional_servers'] = $this->getFunctionalServers();
         $data['resource_names'] = $this->getResourceNames();
@@ -26,18 +25,37 @@ class MonitoringParameters extends BaseController
     public function store()
     {
         $model = new MonitoringParametersModel();
-        $data = [
-            'monitoring_tool' => $this->request->getPost('monitoring_tool'),
-            'ip_address' => $this->request->getPost('ip_address'),
-            'name_server' => $this->request->getPost('name_server'),
-            'functional_server' => $this->request->getPost('functional_server'),
-            'services' => $this->request->getPost('services'),
-            'ports_service' => $this->request->getPost('ports_service'),
-            'kpi_indicator' => $this->request->getPost('kpi_indicator') ? 1 : 0,
-            'description' => $this->request->getPost('description'),
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-        ];
+        $monitorCategory = $this->request->getPost('monitor_category');
+        $ipServer = $this->request->getPost('ip_server');
+        $environment = $this->request->getPost('environment');
+        $id = $this->request->getPost('id');
+
+        if ($monitorCategory == 'server') {
+            $data = [
+                'ip_server' => $ipServer,
+                'environment' => $environment,
+                'monitor_category' => $monitorCategory,
+                'id' => $id,
+                'resources' => json_encode($this->request->getPost('resources')),
+                'warning_thresholds' => json_encode($this->request->getPost('warning_thresholds')),
+                'err_thresholds' => json_encode($this->request->getPost('err_thresholds')),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
+        } elseif ($monitorCategory == 'services') {
+            $data = [
+                'ip_server' => $ipServer,
+                'environment' => $environment,
+                'monitor_category' => $monitorCategory,
+                'id' => $id,
+                'services_name' => json_encode($this->request->getPost('services_name')),
+                'service_ports' => json_encode($this->request->getPost('service_ports')),
+                'status' => json_encode($this->request->getPost('status')),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
+        }
+
         $model->save($data);
         return redirect()->to('/monitoring_parameters');
     }
@@ -47,7 +65,6 @@ class MonitoringParameters extends BaseController
         $model = new MonitoringParametersModel();
         $data['parameter'] = $model->find($id);
         $data['parameter_names'] = $this->getParameterNames();
-        $data['tools_names'] = $this->getToolsNames();
         $data['service_names'] = $this->getServiceNames();
         $data['functional_servers'] = $this->getFunctionalServers();
         $data['resource_names'] = $this->getResourceNames();
@@ -57,17 +74,32 @@ class MonitoringParameters extends BaseController
     public function update($id)
     {
         $model = new MonitoringParametersModel();
-        $data = [
-            'monitoring_tool' => $this->request->getPost('monitoring_tool'),
-            'ip_address' => $this->request->getPost('ip_address'),
-            'name_server' => $this->request->getPost('name_server'),
-            'functional_server' => $this->request->getPost('functional_server'),
-            'services' => $this->request->getPost('services'),
-            'ports_service' => $this->request->getPost('ports_service'),
-            'kpi_indicator' => $this->request->getPost('kpi_indicator') ? 1 : 0,
-            'description' => $this->request->getPost('description'),
-            'updated_at' => date('Y-m-d H:i:s'),
-        ];
+        $monitorCategory = $this->request->getPost('monitor_category');
+        $ipServer = $this->request->getPost('ip_server');
+        $environment = $this->request->getPost('environment');
+
+        if ($monitorCategory == 'server') {
+            $data = [
+                'ip_server' => $ipServer,
+                'environment' => $environment,
+                'monitor_category' => $monitorCategory,
+                'resources' => json_encode($this->request->getPost('resources')),
+                'warning_thresholds' => json_encode($this->request->getPost('warning_thresholds')),
+                'err_thresholds' => json_encode($this->request->getPost('err_thresholds')),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
+        } elseif ($monitorCategory == 'services') {
+            $data = [
+                'ip_server' => $ipServer,
+                'environment' => $environment,
+                'monitor_category' => $monitorCategory,
+                'services_name' => json_encode($this->request->getPost('services_name')),
+                'service_ports' => json_encode($this->request->getPost('service_ports')),
+                'status' => json_encode($this->request->getPost('status')),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ];
+        }
+
         $model->update($id, $data);
         return redirect()->to('/monitoring_parameters');
     }
@@ -78,6 +110,7 @@ class MonitoringParameters extends BaseController
         $model->delete($id);
         return redirect()->to('/monitoring_parameters');
     }
+
 
     private function getParameterNames()
     {
